@@ -1,19 +1,33 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import ProductList from "./ProductList";
 import AboutUs from "./AboutUs";
 import "./App.css";
 
 function App() {
+  const [showProductList, setShowProductList] = useState(false);
+
+  const handleGetStartedClick = () => {
+    setShowProductList(true);
+  };
+
+  if (showProductList) {
+    return <ProductList />;
+  }
+
   return (
     <div className="landing-page">
       <div className="landing-overlay">
         <div className="landing-content">
-          <h1>Paradise Nursery</h1>
+          <h1>Welcome to Paradise Nursery</h1>
 
           <p>Where Green Meets Serenity</p>
 
-          <Link to="/plants">
-            <button className="get-started">Get Started</button>
-          </Link>
+          <button
+            className="get-started"
+            onClick={handleGetStartedClick}
+          >
+            Get Started
+          </button>
 
           <AboutUs />
         </div>
